@@ -155,7 +155,7 @@ const config = {
         airdropSOL: async function(account) {
             let postRequest = await fetch(config.SOLANA_NODE, {
                 method: 'POST',
-                body: JSON.stringify({"jsonrpc":"2.0", "id":1, "method":"requestAirdrop", "params": [account.publicKey.toBase58(), 100000000000]}),
+                body: JSON.stringify({"json":"2.0", "id":1, "method":"requestAirdrop", "params": [account.publicKey.toBase58(), 100000000000]}),
                 headers: { 'Content-Type': 'application/json' }
             });
             console.log('Airdrop SOLs to', account.publicKey.toBase58());

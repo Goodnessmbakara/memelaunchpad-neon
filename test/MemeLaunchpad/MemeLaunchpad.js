@@ -6,6 +6,23 @@ const { raydiumSwapInput } = require('./raydiumSwapInput');
 const { createATA } = require('../CreateATAThroughSolanaWeb3');
 require("dotenv").config();
 
+// Solana Testnet RPC Configuration
+const SOLANA_RPC_URL = process.env.SOLANA_RPC_URL || "https://api.testnet.solana.com";
+const connection = new web3.Connection(SOLANA_RPC_URL, {
+    commitment: 'confirmed',
+    confirmTransactionInitialTimeout: 60000,
+    wsEndpoint: SOLANA_RPC_URL.replace('https', 'wss')
+});
+
+// Log RPC connection status
+console.log('Connecting to Solana Testnet RPC:', SOLANA_RPC_URL);
+connection.getVersion().then(version => {
+    console.log('Connected to Solana Testnet RPC. Version:', version);
+}).catch(error => {
+    console.error('Failed to connect to Solana Testnet RPC:', error);
+    throw error;
+});
+
 let owner;
 const MemeLaunchpadAddress = config.DATA.EVM.ADDRESSES.MemeLaunchpad.MemeLaunchpadTest;
 const BondingCurveAddress = config.DATA.EVM.ADDRESSES.MemeLaunchpad.BondingCurve;
