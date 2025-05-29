@@ -21,10 +21,8 @@ if (process.env.ANCHOR_WALLET == undefined) {
     console.error('Please create id.json in the root of the hardhat project with your Solana\'s private key and run the following command in the terminal in order to proceed with the script execution: \n\n export ANCHOR_WALLET=./id.json');
     process.exit();
 }
-
-
 const keypair = web3.Keypair.fromSecretKey(
-    bs58.default.decode(process.env.PRIVATE_KEY_SOLANA)
+    bs58.decode(process.env.PRIVATE_KEY_SOLANA)
 );
 
 const VALID_PROGRAM_ID = new Set([CREATE_CPMM_POOL_PROGRAM.toBase58(), DEV_CREATE_CPMM_POOL_PROGRAM.toBase58()])
@@ -66,6 +64,12 @@ async function raydiumSwapInput(poolId) {
     const slippage = new Percent(5, 100); // 5%
     const baseIn = inputMint === poolInfo.mintA.address;
 
+    const balance = await connection.getBalance(keypair.publicKey);
+    if (balance < uiInputAmount * 10 ** 9) {
+        console.error('Not enough SOL balance. Needed', uiInputAmount, 'SOLs, having', balance);
+        return;
+    }
+
     const swapResult = CurveCalculator.swap(
         inputAmount,
         baseIn ? rpcData.baseReserve : rpcData.quoteReserve,
@@ -91,4 +95,4 @@ async function raydiumSwapInput(poolId) {
 module.exports = {
     raydiumSwapInput
 };
-   
+  

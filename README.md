@@ -71,15 +71,22 @@ module.exports = {
 ## 🔗 Contract Addresses and Transactions
 
 ### Deployed Contracts
-- **MemeLaunchpad**: [View on Neonscan](https://devnet.neonscan.org/address/YOUR_CONTRACT_ADDRESS)
-- **BondingCurve**: `0x0Fc6Ec7F9F06bd733913C1Fcd10BFc959a1F88DC`
-- **ERC20ForSplFactory**: `0xF6b17787154C418d5773Ea22Afc87A95CAA3e957`
-- **WSOL**: `0xc7Fc9b46e479c5Cb42f6C458D1881e55E6B7986c`
+- **MemeLaunchpad**: `0x18caB9d00eF5a52E40EA3e25f9b15CC3a6c48505` [View on Neonscan](https://devnet.neonscan.org/address/0x18caB9d00eF5a52E40EA3e25f9b15CC3a6c48505)
+- **BondingCurve**: `0x0Fc6Ec7F9F06bd733913C1Fcd10BFc959a1F88DC` [View on Neonscan](https://devnet.neonscan.org/address/0x0Fc6Ec7F9F06bd733913C1Fcd10BFc959a1F88DC)
+- **ERC20ForSplFactory**: `0xF6b17787154C418d5773Ea22Afc87A95CAA3e957` [View on Neonscan](https://devnet.neonscan.org/address/0xF6b17787154C418d5773Ea22Afc87A95CAA3e957)
+- **WSOL**: `0xc7Fc9b46e479c5Cb42f6C458D1881e55E6B7986c` [View on Neonscan](https://devnet.neonscan.org/address/0xc7Fc9b46e479c5Cb42f6C458D1881e55E6B7986c)
 
 ### Key Transactions
-1. **Contract Deployment**: [View on Neonscan](https://devnet.neonscan.org/tx/YOUR_DEPLOYMENT_TX)
-2. **Token Sale Creation**: [View on Neonscan](https://devnet.neonscan.org/tx/YOUR_TOKEN_SALE_TX)
-3. **Raydium Pool Creation**: [View on Solana Explorer](https://explorer.solana.com/tx/YOUR_POOL_CREATION_TX)
+1. **Token Sale Creation**: `0x884293febb31142cd79af9c6af940111820ae69ec6b7b8bad7f036f58017f496` [View on Neonscan](https://devnet.neonscan.org/tx/0x884293febb31142cd79af9c6af940111820ae69ec6b7b8bad7f036f58017f496)
+2. **Buy Transaction (Not Reaching Goal)**: `0x4e7b73aef082449d20015893bd22fdf25e907045c7fb0b3a56415bd405ae3b3c` [View on Neonscan](https://devnet.neonscan.org/tx/0x4e7b73aef082449d20015893bd22fdf25e907045c7fb0b3a56415bd405ae3b3c)
+3. **Buy Transaction (Reaching Goal)**: `0xbd513cebbaef07684867f8b565c117f00766b02e98210ddb07270b613478fa29` [View on Neonscan](https://devnet.neonscan.org/tx/0xbd513cebbaef07684867f8b565c117f00766b02e98210ddb07270b613478fa29)
+4. **Claim Token Sale Fee**: `0x02159983787f27b533694e55817ab222caa253966734cb686564d25a2b467ac4` [View on Neonscan](https://devnet.neonscan.org/tx/0x02159983787f27b533694e55817ab222caa253966734cb686564d25a2b467ac4)
+5. **Collect Pool Fees**: `0x2b2b46a4e213950efc5f5bca912d1b9616879ddb19ef9cdc1e050fece9737295` [View on Neonscan](https://devnet.neonscan.org/tx/0x2b2b46a4e213950efc5f5bca912d1b9616879ddb19ef9cdc1e050fece9737295)
+
+### Raydium Integration
+- **Raydium Pool ID**: `2Zjo3najyvLK5QyPkvbJ9hyZwEyXc71fjNY8mZXo7jG4` [View on Solana Explorer](https://explorer.solana.com/address/2Zjo3najyvLK5QyPkvbJ9hyZwEyXc71fjNY8mZXo7jG4)
+- **Locked LP Amount**: 14142135523
+- **NFT Account**: `6aXPnX1Q7wK2JFqyVNPxddon3LY5Zw21h18rfCWGYrxd` [View on Solana Explorer](https://explorer.solana.com/address/6aXPnX1Q7wK2JFqyVNPxddon3LY5Zw21h18rfCWGYrxd)
 
 ## 🧪 Testing
 Run the test suite:
@@ -88,11 +95,14 @@ npx hardhat test test/MemeLaunchpad/MemeLaunchpad.js
 ```
 
 ### Test Results
-- Successfully deployed MemeLaunchpad contract
-- Created token sale with funding goal
-- Executed buy operations
-- Created Raydium liquidity pool
-- Collected pool fees
+- ✅ Successfully deployed MemeLaunchpad contract at `0x18caB9d00eF5a52E40EA3e25f9b15CC3a6c48505`
+- ✅ Created token sale with funding goal (Tx: `0x884293febb31142cd79af9c6af940111820ae69ec6b7b8bad7f036f58017f496`)
+- ✅ Executed buy operations:
+  - Buy without reaching goal (Tx: `0x4e7b73aef082449d20015893bd22fdf25e907045c7fb0b3a56415bd405ae3b3c`)
+  - Buy reaching goal (Tx: `0xbd513cebbaef07684867f8b565c117f00766b02e98210ddb07270b613478fa29`)
+- ✅ Created Raydium liquidity pool (Pool ID: `2Zjo3najyvLK5QyPkvbJ9hyZwEyXc71fjNY8mZXo7jG4`)
+- ✅ Collected pool fees (Tx: `0x2b2b46a4e213950efc5f5bca912d1b9616879ddb19ef9cdc1e050fece9737295`)
+- ✅ All tests passed successfully (4 passing tests in 9 minutes)
 
 ## 🔍 Technical Details
 

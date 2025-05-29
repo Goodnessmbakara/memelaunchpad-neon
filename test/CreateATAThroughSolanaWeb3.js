@@ -16,7 +16,7 @@ if (process.env.ANCHOR_WALLET == undefined) {
     process.exit();
 }
 const keypair = web3.Keypair.fromSecretKey(
-    bs58.default.decode(process.env.PRIVATE_KEY_SOLANA)
+    bs58.decode(process.env.PRIVATE_KEY_SOLANA)
 );
 
 const defaultTokenMintsArray = [
